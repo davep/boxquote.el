@@ -2,6 +2,10 @@
 ;; Copyright 1999-2009 by Dave Pearson <davep@davep.org>
 ;; $Revision: 1.23 $
 
+;; Author: Dave Pearson <davep@davep.org>
+;; Version: 1.23
+;; URL: http://www.davep.org/emacs/boxquote.el
+
 ;; boxquote.el is free software distributed under the terms of the GNU
 ;; General Public Licence, version 2 or (at your option) any later version.
 ;; For details see the file COPYING.
