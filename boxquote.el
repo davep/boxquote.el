@@ -1,6 +1,6 @@
 ;;; boxquote.el --- Quote text with a semi-box.
 ;; Copyright 1999-2009 by Dave Pearson <davep@davep.org>
-;; $Revision: 1.23 $
+;; Revision: 1.23 $
 
 ;; boxquote.el is free software distributed under the terms of the GNU
 ;; General Public Licence, version 2 or (at your option) any later version.
@@ -51,13 +51,13 @@
 
 ;; Attempt to handle older/other emacs.
 (eval-and-compile
-  
+
   ;; If customize isn't available just use defvar instead.
   (unless (fboundp 'defgroup)
     (defmacro defgroup  (&rest rest) nil)
     (defmacro defcustom (symbol init docstring &rest rest)
       `(defvar ,symbol ,init ,docstring)))
-  
+
   ;; If `line-beginning-position' isn't available provide one.
   (unless (fboundp 'line-beginning-position)
     (defun line-beginning-position (&optional n)
@@ -193,7 +193,7 @@ the article you'd copied the text from."
   "*Format string to use when formatting a `where-is' description."
   :type  'string
   :group 'boxquote)
-  
+
 ;; Main code:
 
 (defun boxquote-xemacs-p ()
@@ -432,7 +432,7 @@ ITEM is a function for retrieving the item to get help on."
     (boxquote-title (format title-format (funcall item)))
     (when one-window-p
       (delete-other-windows))))
-  
+
 ;;;###autoload
 (defun boxquote-describe-function ()
   "Call `describe-function' and boxquote the output into the current buffer."
@@ -514,7 +514,7 @@ prompted for a buffer. The key defintion used will be taken from that buffer."
        (insert text)
        (boxquote-buffer)
        (buffer-string)))))
-  
+
 ;;;###autoload
 (defun boxquote-narrow-to-boxquote ()
   "Narrow the buffer to the current boxquote."
@@ -552,7 +552,7 @@ prompted for a buffer. The key defintion used will be taken from that buffer."
         (let ((fill-prefix boxquote-side))
           (fill-paragraph arg)))
     (fill-paragraph arg)))
-  
+
 ;;;###autoload
 (defun boxquote-unbox-region (start end)
   "Remove a box created with `boxquote-region'."
