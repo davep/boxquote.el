@@ -1,6 +1,6 @@
 ;;; boxquote.el --- Quote text with a semi-box.
-;; Copyright 1999-2009 by Dave Pearson <davep@davep.org>
-;; Revision: 1.23 $
+;; Copyright 1999-2017 by Dave Pearson <davep@davep.org>
+;; Version: 1.23
 
 ;; boxquote.el is free software distributed under the terms of the GNU
 ;; General Public Licence, version 2 or (at your option) any later version.
