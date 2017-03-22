@@ -1,6 +1,6 @@
 ;;; boxquote.el --- Quote text with a semi-box.
-;; Copyright 1999-2008 by Dave Pearson <davep@davep.org>
-;; $Revision: 1.22 $
+;; Copyright 1999-2009 by Dave Pearson <davep@davep.org>
+;; $Revision: 1.23 $
 
 ;; boxquote.el is free software distributed under the terms of the GNU
 ;; General Public Licence, version 2 or (at your option) any later version.
@@ -428,7 +428,7 @@ ITEM is a function for retrieving the item to get help on."
      (save-window-excursion
        (funcall help-call)
        (with-current-buffer (boxquote-help-buffer-name (funcall item))
-         (buffer-string))))
+         (buffer-substring-no-properties (point-min) (point-max)))))
     (boxquote-title (format title-format (funcall item)))
     (when one-window-p
       (delete-other-windows))))
