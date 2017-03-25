@@ -1,3 +1,5 @@
+[![MELPA Stable](http://stable.melpa.org/packages/boxquote-badge.svg)](http://stable.melpa.org/#/boxquote)
+
 ## Commentary:
 
 boxquote provides a set of functions for using a text quoting style that
