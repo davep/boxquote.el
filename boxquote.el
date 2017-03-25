@@ -5,6 +5,7 @@
 ;; Version: 1.23
 ;; Keywords: quoting
 ;; URL: https://github.com/davep/boxquote.el
+;; Package-Requires: ((cl-lib "0.5"))
 
 ;; boxquote.el is free software distributed under the terms of the GNU
 ;; General Public Licence, version 2 or (at your option) any later version.
@@ -50,7 +51,7 @@
 ;; Things we need:
 
 (eval-when-compile
-  (require 'cl))
+  (require 'cl-lib))
 (require 'rect)
 
 ;; Customize options.
@@ -193,12 +194,12 @@ boxquote is found."
            (re-bottom (concat "^" (regexp-quote boxquote-bottom-corner)
                               (regexp-quote boxquote-top-and-tail)))
            (points
-            (flet ((find-box-end (re &optional back)
-                     (save-excursion
-                       (when (if back
-                                 (search-backward-regexp re nil t)
-                               (search-forward-regexp re nil t))
-                         (point)))))
+            (cl-flet ((find-box-end (re &optional back)
+                        (save-excursion
+                          (when (if back
+                                    (search-backward-regexp re nil t)
+                                  (search-forward-regexp re nil t))
+                            (point)))))
               (cond ((looking-at re-top)
                      (cons (point) (find-box-end re-bottom)))
                     ((looking-at re-left)
@@ -227,7 +228,7 @@ boxquote is found."
 
 (defun boxquote-get-title ()
   "Get the title for the current boxquote."
-  (multiple-value-bind (prefix-len suffix-len)
+  (cl-multiple-value-bind (prefix-len suffix-len)
       (with-temp-buffer
         (let ((look-for "%s"))
           (insert boxquote-title-format)
@@ -269,12 +270,12 @@ be formatted using `boxquote-title-format'."
   (interactive "r")
   (save-excursion
     (save-restriction
-      (flet ((bol-at-p (n)
-               (setf (point) n)
-               (bolp))
-             (insert-corner (corner pre-break)
-               (insert (concat (if pre-break "\n" "")
-                               corner boxquote-top-and-tail "\n"))))
+      (cl-flet ((bol-at-p (n)
+                  (setf (point) n)
+                  (bolp))
+                (insert-corner (corner pre-break)
+                  (insert (concat (if pre-break "\n" "")
+                                  corner boxquote-top-and-tail "\n"))))
         (let ((break-start (not (bol-at-p start)))
               (break-end   (not (bol-at-p end))))
           (narrow-to-region start end)
