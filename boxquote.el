@@ -150,22 +150,22 @@ the article you'd copied the text from."
   :group 'boxquote)
 
 (defcustom boxquote-describe-function-title-format "C-h f %s RET"
-  "*Format string to use when formatting a function description box title"
+  "*Format string to use when formatting a function description box title."
   :type  'string
   :group 'boxquote)
 
 (defcustom boxquote-describe-variable-title-format "C-h v %s RET"
-  "*Format string to use when formatting a variable description box title"
+  "*Format string to use when formatting a variable description box title."
   :type  'string
   :group 'boxquote)
 
 (defcustom boxquote-describe-key-title-format "C-h k %s"
-  "*Format string to use when formatting a key description box title"
+  "*Format string to use when formatting a key description box title."
   :type  'string
   :group 'boxquote)
 
 (defcustom boxquote-where-is-title-format "C-h w %s RET"
-  "*Format string to use when formatting a `where-is' description box title"
+  "*Format string to use when formatting a `where-is' description box title."
   :type  'string
   :group 'boxquote)
 
@@ -441,7 +441,7 @@ ITEM is a function for retrieving the item to get help on."
 
 ;;;###autoload
 (defun boxquote-describe-key (key)
-  "Call `describe-key' and boxquote the output into the current buffer.
+  "Call `describe-key' on KEY and boxquote the output into the current buffer.
 
 If the call to this command is prefixed with \\[universal-argument] you will also be
 prompted for a buffer. The key defintion used will be taken from that buffer."
@@ -562,4 +562,4 @@ prompted for a buffer. The key defintion used will be taken from that buffer."
 
 (provide 'boxquote)
 
-;;; boxquote.el ends here.
+;;; boxquote.el ends here
