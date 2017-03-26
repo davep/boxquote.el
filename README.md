@@ -1,4 +1,5 @@
 [![MELPA Stable](http://stable.melpa.org/packages/boxquote-badge.svg)](http://stable.melpa.org/#/boxquote)
+[![MELPA](https://melpa.org/packages/boxquote-badge.svg)](https://melpa.org/#/boxquote)
 
 ## Commentary:
 
