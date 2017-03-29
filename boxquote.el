@@ -37,7 +37,8 @@
 ;; hassled him for his code but it was far more fun to write it myself.
 ;;
 ;; Mark Milhollan for providing a patch that helped me get the help quoting
-;; functions working with XEmacs.
+;; functions working with XEmacs. (which, for other reasons, I've neded to
+;; remove as of v2.0 -- hopefully I can get things working on XEmacs again).
 ;;
 ;; Oliver Much for suggesting the idea of having a `boxquote-kill-ring-save'
 ;; function.
@@ -175,10 +176,6 @@ the article you'd copied the text from."
   :group 'boxquote)
 
 ;; Main code:
-
-(defun boxquote-xemacs-p ()
-  "Are we running in XEmacs?"
-  (and (boundp 'running-xemacs) (symbol-value 'running-xemacs)))
 
 (defun boxquote-points ()
   "Find the start and end points of a boxquote.
