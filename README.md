@@ -1,4 +1,4 @@
-# `boxquote.el`
+# boxquote.el
 Quote text with a semi-box.
 
 [![MELPA Stable](http://stable.melpa.org/packages/boxquote-badge.svg)](http://stable.melpa.org/#/boxquote)
