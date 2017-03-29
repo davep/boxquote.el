@@ -414,17 +414,16 @@ ITEM is a function for retrieving the item to get help on."
       (delete-other-windows))))
 
 ;;;###autoload
-(defun boxquote-describe-function ()
+(defun boxquote-describe-function (function)
   "Call `describe-function' and boxquote the output into the current buffer."
-  (interactive)
-  (boxquote-quote-help-buffer
-   #'(lambda ()
-       (call-interactively #'describe-function))
-   boxquote-describe-function-title-format
-   #'(lambda ()
-       (car (if (boxquote-xemacs-p)
-                (symbol-value 'function-history)
-              minibuffer-history)))))
+  (interactive
+   (list
+    (completing-read "Describe function: " obarray 'fboundp t nil nil)))
+    (boxquote-text
+     (save-window-excursion
+       (substring-no-properties
+        (describe-function (intern function)))))
+    (boxquote-title (format boxquote-describe-function-title-format function)))
 
 ;;;###autoload
 (defun boxquote-describe-variable ()
