@@ -387,32 +387,6 @@ whatever `boxquote-kill-ring-save-title' returned at the time."
   (let ((box (boxquote-points-with-check)))
     (boxquote-region (car box) (1+ (cdr box)))))
 
-(defun boxquote-help-buffer-name (item)
-  "Return the name of the help buffer associated with ITEM."
-  (if (boxquote-xemacs-p)
-      (loop for buffer in (symbol-value 'help-buffer-list)
-            when (string-match (concat "^*Help:.*`" item "'") buffer)
-            return buffer)
-    "*Help*"))
-
-(defun boxquote-quote-help-buffer (help-call title-format item)
-  "Perform a help command and boxquote the output.
-
-HELP-CALL is a function that calls the help command.
-
-TITLE-FORMAT is the `format' string to use to product the boxquote title.
-
-ITEM is a function for retrieving the item to get help on."
-  (let ((one-window-p (one-window-p)))
-    (boxquote-text
-     (save-window-excursion
-       (funcall help-call)
-       (with-current-buffer (boxquote-help-buffer-name (funcall item))
-         (buffer-substring-no-properties (point-min) (point-max)))))
-    (boxquote-title (format title-format (funcall item)))
-    (when one-window-p
-      (delete-other-windows))))
-
 ;;;###autoload
 (defun boxquote-describe-function (function)
   "Call `describe-function' and boxquote the output into the current buffer."
@@ -440,6 +414,32 @@ ITEM is a function for retrieving the item to get help on."
      (substring-no-properties
       (describe-variable (intern variable)))))
   (boxquote-title (format boxquote-describe-variable-title-format variable)))
+
+(defun boxquote-help-buffer-name (item)
+  "Return the name of the help buffer associated with ITEM."
+  (if (boxquote-xemacs-p)
+      (loop for buffer in (symbol-value 'help-buffer-list)
+            when (string-match (concat "^*Help:.*`" item "'") buffer)
+            return buffer)
+    "*Help*"))
+
+(defun boxquote-quote-help-buffer (help-call title-format item)
+  "Perform a help command and boxquote the output.
+
+HELP-CALL is a function that calls the help command.
+
+TITLE-FORMAT is the `format' string to use to product the boxquote title.
+
+ITEM is a function for retrieving the item to get help on."
+  (let ((one-window-p (one-window-p)))
+    (boxquote-text
+     (save-window-excursion
+       (funcall help-call)
+       (with-current-buffer (boxquote-help-buffer-name (funcall item))
+         (buffer-substring-no-properties (point-min) (point-max)))))
+    (boxquote-title (format title-format (funcall item)))
+    (when one-window-p
+      (delete-other-windows))))
 
 ;;;###autoload
 (defun boxquote-describe-key (key)
