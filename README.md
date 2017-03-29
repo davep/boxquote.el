@@ -1,11 +1,15 @@
+# `boxquote.el`
+Quote text with a semi-box.
+
 [![MELPA Stable](http://stable.melpa.org/packages/boxquote-badge.svg)](http://stable.melpa.org/#/boxquote)
 [![MELPA](https://melpa.org/packages/boxquote-badge.svg)](https://melpa.org/#/boxquote)
 
 ## Commentary:
 
-boxquote provides a set of functions for using a text quoting style that
-partially boxes in the left hand side of an area of text, such a marking
-style might be used to show externally included text or example code.
+`boxquote.el` provides a set of functions for using a text quoting style
+that partially boxes in the left hand side of an area of text, such a
+marking style might be used to show externally included text or example
+code.
 
 ```
 ,----
@@ -31,7 +35,8 @@ mimic the "inclusion quoting" style in his Usenet posts. I could have
 hassled him for his code but it was far more fun to write it myself.
 
 Mark Milhollan for providing a patch that helped me get the help quoting
-functions working with XEmacs.
+functions working with XEmacs. (which, for other reasons, I've neded to
+remove as of v2.0 -- hopefully I can get things working on XEmacs again).
 
 Oliver Much for suggesting the idea of having a `boxquote-kill-ring-save`
 function.
