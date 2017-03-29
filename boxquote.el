@@ -419,11 +419,11 @@ ITEM is a function for retrieving the item to get help on."
   (interactive
    (list
     (completing-read "Describe function: " obarray 'fboundp t nil nil)))
-    (boxquote-text
-     (save-window-excursion
-       (substring-no-properties
-        (describe-function (intern function)))))
-    (boxquote-title (format boxquote-describe-function-title-format function)))
+  (boxquote-text
+   (save-window-excursion
+     (substring-no-properties
+      (describe-function (intern function)))))
+  (boxquote-title (format boxquote-describe-function-title-format function)))
 
 ;;;###autoload
 (defun boxquote-describe-variable (variable)
