@@ -389,7 +389,9 @@ whatever `boxquote-kill-ring-save-title' returned at the time."
 
 ;;;###autoload
 (defun boxquote-describe-function (function)
-  "Call `describe-function' and boxquote the output into the current buffer."
+  "Call `describe-function' and boxquote the output into the current buffer.
+
+FUNCTION is the function to describe."
   (interactive
    (list
     (completing-read "Describe function: " obarray 'fboundp t nil nil)))
@@ -401,7 +403,9 @@ whatever `boxquote-kill-ring-save-title' returned at the time."
 
 ;;;###autoload
 (defun boxquote-describe-variable (variable)
-  "Call `describe-variable' and boxquote the output into the current buffer."
+  "Call `describe-variable' and boxquote the output into the current buffer.
+
+VARIABLE is the variable to describe."
   (interactive
    (list
     (completing-read "Describe variable: " obarray
