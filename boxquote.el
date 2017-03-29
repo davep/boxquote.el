@@ -419,32 +419,6 @@ VARIABLE is the variable to describe."
       (describe-variable (intern variable)))))
   (boxquote-title (format boxquote-describe-variable-title-format variable)))
 
-(defun boxquote-help-buffer-name (item)
-  "Return the name of the help buffer associated with ITEM."
-  (if (boxquote-xemacs-p)
-      (loop for buffer in (symbol-value 'help-buffer-list)
-            when (string-match (concat "^*Help:.*`" item "'") buffer)
-            return buffer)
-    "*Help*"))
-
-(defun boxquote-quote-help-buffer (help-call title-format item)
-  "Perform a help command and boxquote the output.
-
-HELP-CALL is a function that calls the help command.
-
-TITLE-FORMAT is the `format' string to use to product the boxquote title.
-
-ITEM is a function for retrieving the item to get help on."
-  (let ((one-window-p (one-window-p)))
-    (boxquote-text
-     (save-window-excursion
-       (funcall help-call)
-       (with-current-buffer (boxquote-help-buffer-name (funcall item))
-         (buffer-substring-no-properties (point-min) (point-max)))))
-    (boxquote-title (format title-format (funcall item)))
-    (when one-window-p
-      (delete-other-windows))))
-
 ;;;###autoload
 (defun boxquote-describe-key (key)
   "Call `describe-key' on KEY and boxquote the output into the current buffer.
@@ -461,14 +435,12 @@ prompted for a buffer. The key defintion used will be taken from that buffer."
       (if (or (null binding) (integerp binding))
           (message "%s is undefined" (with-current-buffer from-buffer
                                        (key-description key)))
-        (boxquote-quote-help-buffer
-         #'(lambda ()
-             (with-current-buffer from-buffer
-               (describe-key key)))
-         boxquote-describe-key-title-format
-         #'(lambda ()
-             (with-current-buffer from-buffer
-               (key-description key))))))))
+        (boxquote-text
+         (save-window-excursion
+           (describe-key key)
+           (with-current-buffer (help-buffer)
+             (buffer-substring-no-properties (point-min) (point-max)))))
+         (boxquote-title (format boxquote-describe-key-title-format (key-description key)))))))
 
 ;;;###autoload
 (defun boxquote-shell-command (command)
