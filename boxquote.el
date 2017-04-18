@@ -522,10 +522,10 @@ prompted for a buffer. The key defintion used will be taken from that buffer."
                               (regexp-quote boxquote-bottom-corner)
                               "]" boxquote-top-and-tail))
                 (lines (concat "^" (regexp-quote boxquote-side))))
-            (loop while (< (point) (point-max))
-                  if (looking-at ends)  do (kill-line t)
-                  if (looking-at lines) do (delete-char 2)
-                  do (forward-line)))
+            (cl-loop while (< (point) (point-max))
+               if (looking-at ends)  do (kill-line t)
+               if (looking-at lines) do (delete-char 2)
+               do (forward-line)))
         (error "I can't see a box here")))))
 
 ;;;###autoload
