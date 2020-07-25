@@ -35,7 +35,7 @@ mimic the "inclusion quoting" style in his Usenet posts. I could have
 hassled him for his code but it was far more fun to write it myself.
 
 Mark Milhollan for providing a patch that helped me get the help quoting
-functions working with XEmacs. (which, for other reasons, I've neded to
+functions working with XEmacs. (which, for other reasons, I've needed to
 remove as of v2.0 -- hopefully I can get things working on XEmacs again).
 
 Oliver Much for suggesting the idea of having a `boxquote-kill-ring-save`
