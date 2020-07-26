@@ -46,7 +46,7 @@
 ;; hassled him for his code but it was far more fun to write it myself.
 ;;
 ;; Mark Milhollan for providing a patch that helped me get the help quoting
-;; functions working with XEmacs. (which, for other reasons, I've neded to
+;; functions working with XEmacs. (which, for other reasons, I've needed to
 ;; remove as of v2.0 -- hopefully I can get things working on XEmacs again).
 ;;
 ;; Oliver Much for suggesting the idea of having a `boxquote-kill-ring-save'
@@ -430,7 +430,7 @@ VARIABLE is the variable to describe."
   "Call `describe-key' on KEY and boxquote the output into the current buffer.
 
 If the call to this command is prefixed with \\[universal-argument] you will also be
-prompted for a buffer. The key defintion used will be taken from that buffer."
+prompted for a buffer. The key definition used will be taken from that buffer."
   (interactive "kDescribe key: ")
   (let ((from-buffer (if current-prefix-arg
                          (read-buffer "Buffer: " (current-buffer) t)
