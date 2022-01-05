@@ -1,9 +1,9 @@
 # boxquote.el
 Quote text with a semi-box.
 
-[![NonGNU ELPA](https://elpa.nongnu.org/nongnu/boxquote.svg)](https://elpa.nongnu.org/nongnu/boxquote.html)
 [![MELPA Stable](http://stable.melpa.org/packages/boxquote-badge.svg)](http://stable.melpa.org/#/boxquote)
 [![MELPA](https://melpa.org/packages/boxquote-badge.svg)](https://melpa.org/#/boxquote)
+[![NonGNU ELPA](https://elpa.nongnu.org/nongnu/boxquote.svg)](https://elpa.nongnu.org/nongnu/boxquote.html)
 
 ## Commentary:
 
