@@ -45,3 +45,5 @@ function.
 Reiner Steib for suggesting `boxquote-where-is` and the idea of letting
 `boxquote-describe-key` describe key bindings from other buffers. Also
 thanks go to Reiner for suggesting `boxquote-insert-buffer`.
+
+[//]: # (README.md ends here)
