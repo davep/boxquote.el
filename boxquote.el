@@ -227,7 +227,7 @@ boxquote is found."
   "Return a regular expression to match the title."
   (with-temp-buffer
     (insert (regexp-quote boxquote-title-format))
-    (setf (point) (point-min))
+    (goto-char (point-min))
     (when (search-forward "%s" nil t)
       (replace-match ".*" nil t))
     (buffer-string)))
@@ -238,15 +238,15 @@ boxquote is found."
       (with-temp-buffer
         (let ((look-for "%s"))
           (insert boxquote-title-format)
-          (setf (point) (point-min))
+          (goto-char (point-min))
           (search-forward look-for)
           (list (- (point) (length look-for) 1) (- (point-max) (point)))))
     (save-excursion
       (save-restriction
         (boxquote-narrow-to-boxquote)
-        (setf (point) (+ (point-min)
-                         (length (concat boxquote-top-corner
-                                         boxquote-top-and-tail))))
+        (goto-char (+ (point-min)
+                      (length (concat boxquote-top-corner
+                                      boxquote-top-and-tail))))
         (if (looking-at (boxquote-title-format-as-regexp))
             (buffer-substring-no-properties (+ (point) prefix-len)
                                             (- (line-end-position) suffix-len))
@@ -262,9 +262,9 @@ be formatted using `boxquote-title-format'."
   (save-excursion
     (save-restriction
       (boxquote-narrow-to-boxquote)
-      (setf (point) (+ (point-min)
-                       (length (concat boxquote-top-corner
-                                       boxquote-top-and-tail))))
+      (goto-char (+ (point-min)
+                    (length (concat boxquote-top-corner
+                                    boxquote-top-and-tail))))
       (unless (eolp)
         (kill-line))
       (unless (zerop (length title))
@@ -277,7 +277,7 @@ be formatted using `boxquote-title-format'."
   (save-excursion
     (save-restriction
       (cl-flet ((bol-at-p (n)
-                  (setf (point) n)
+                  (goto-char n)
                   (bolp))
                 (insert-corner (corner pre-break)
                   (insert (concat (if pre-break "\n" "")
@@ -286,14 +286,14 @@ be formatted using `boxquote-title-format'."
               (break-end   (not (bol-at-p end))))
           (narrow-to-region start end)
           (run-hooks 'boxquote-region-hook)
-          (setf (point) (point-min))
+          (goto-char (point-min))
           (insert-corner boxquote-top-corner break-start)
           (let ((start-point (line-beginning-position)))
-            (setf (point) (point-max))
+            (goto-char (point-max))
             (insert-corner boxquote-bottom-corner break-end)
             (string-rectangle start-point
                               (progn
-                                (setf (point) (point-max))
+                                (goto-char (point-max))
                                 (forward-line -2)
                                 (line-beginning-position))
                               boxquote-side)))))))
@@ -357,7 +357,7 @@ whatever `boxquote-kill-ring-save-title' returned at the time."
   (save-excursion
     (insert (with-temp-buffer
               (yank)
-              (setf (point) (point-min))
+              (goto-char (point-min))
               (let ((title
                      (let ((yanked (condition-case nil
                                        (read (current-buffer))
@@ -492,11 +492,11 @@ prompted for a buffer. The key definition used will be taken from that buffer."
   (interactive)
   (let ((box (boxquote-points-with-check)))
     (narrow-to-region (save-excursion
-                        (setf (point) (car box))
+                        (goto-char (car box))
                         (forward-line 1)
                         (point))
                       (save-excursion
-                        (setf (point) (cdr box))
+                        (goto-char (cdr box))
                         (line-beginning-position)))))
 
 ;;;###autoload
@@ -524,7 +524,7 @@ prompted for a buffer. The key definition used will be taken from that buffer."
   (save-excursion
     (save-restriction
       (narrow-to-region start end)
-      (setf (point) (point-min))
+      (goto-char (point-min))
       (if (looking-at (concat "^" (regexp-quote boxquote-top-corner)
                               (regexp-quote boxquote-top-and-tail)))
           (let ((ends (concat "^[" (regexp-quote boxquote-top-corner)
