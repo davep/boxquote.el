@@ -1,8 +1,8 @@
 ;;; boxquote.el --- Quote text with a semi-box.
-;; Copyright 1999-2020 by Dave Pearson <davep@davep.org>
+;; Copyright 1999-2022 by Dave Pearson <davep@davep.org>
 
 ;; Author: Dave Pearson <davep@davep.org>
-;; Version: 2.2
+;; Version: 2.3
 ;; Keywords: quoting
 ;; URL: https://github.com/davep/boxquote.el
 ;; Package-Requires: ((cl-lib "0.5"))
