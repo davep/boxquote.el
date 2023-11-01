@@ -1,4 +1,5 @@
-;;; boxquote.el --- Quote text with a semi-box.
+;;; boxquote.el --- Quote text with a semi-box  -*- lexical-binding: nil -*-
+
 ;; Copyright 1999-2022 by Dave Pearson <davep@davep.org>
 
 ;; Author: Dave Pearson <davep@davep.org>
