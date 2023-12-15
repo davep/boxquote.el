@@ -190,9 +190,9 @@ the article you'd copied the text from."
 (defun boxquote-points ()
   "Find the start and end points of a boxquote.
 
-If `point' is inside a boxquote then a cons is returned, the `car' is the
-start `point' and the `cdr' is the end `point'. NIL is returned if no
-boxquote is found."
+If `point' is inside a boxquote then a cons is returned, the
+`car' is the start `point' and the `cdr' is the end `point'.
+NIL is returned if no boxquote is found."
   (save-excursion
     (beginning-of-line)
     (let* ((re-top    (concat "^" (regexp-quote boxquote-top-corner)
@@ -257,8 +257,8 @@ boxquote is found."
 (defun boxquote-title (title)
   "Set the title of the current boxquote to TITLE.
 
-If TITLE is an empty string the title is removed. Note that the title will
-be formatted using `boxquote-title-format'."
+If TITLE is an empty string the title is removed. Note that
+the title will be formatted using `boxquote-title-format'."
   (interactive (list (read-from-minibuffer "Title: " (boxquote-get-title))))
   (save-excursion
     (save-restriction
@@ -309,8 +309,9 @@ be formatted using `boxquote-title-format'."
 (defun boxquote-insert-file (filename)
   "Insert the contents of a file, boxed with `boxquote-region'.
 
-If `boxquote-title-files' is non-nil the boxquote will be given a title that
-is the result of applying `boxquote-file-title-function' to FILENAME."
+If `boxquote-title-files' is non-nil the boxquote will be given a
+title that is the result of applying `boxquote-file-title-function'
+to FILENAME."
   (interactive "fInsert file: ")
   (insert (with-temp-buffer
             (insert-file-contents filename nil)
@@ -324,8 +325,9 @@ is the result of applying `boxquote-file-title-function' to FILENAME."
 (defun boxquote-insert-buffer (buffer)
   "Insert the contents of a buffer, boxes with `boxquote-region'.
 
-If `boxquote-title-buffers' is non-nil the boxquote will be given a title that
-is the result of applying `boxquote-buffer-title-function' to BUFFER."
+If `boxquote-title-buffers' is non-nil the boxquote will be given a
+title that is the result of applying `boxquote-buffer-title-function'
+to BUFFER."
   (interactive "bInsert Buffer: ")
   (boxquote-text
    (with-current-buffer buffer
@@ -337,8 +339,8 @@ is the result of applying `boxquote-buffer-title-function' to BUFFER."
 (defun boxquote-kill-ring-save ()
   "Like `kill-ring-save' but remembers a title if possible.
 
-The title is acquired by calling `boxquote-kill-ring-save-title'. The title
-will be used by `boxquote-yank'."
+The title is acquired by calling `boxquote-kill-ring-save-title'.
+The title will be used by `boxquote-yank'."
   (interactive)
   (call-interactively #'kill-ring-save)
   (setf (car kill-ring-yank-pointer)
@@ -431,8 +433,10 @@ VARIABLE is the variable to describe."
 (defun boxquote-describe-key (key)
   "Call `describe-key' on KEY and boxquote the output into the current buffer.
 
-If the call to this command is prefixed with \\[universal-argument] you will also be
-prompted for a buffer. The key definition used will be taken from that buffer."
+If the call to this command is prefixed with \
+\\[universal-argument] you will also be
+prompted for a buffer. The key definition used will be taken from
+that buffer."
   (interactive "kDescribe key: ")
   (let ((from-buffer (if current-prefix-arg
                          (read-buffer "Buffer: " (current-buffer) t)
