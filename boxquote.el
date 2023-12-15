@@ -59,13 +59,13 @@
 
 ;;; Code:
 
-;; Things we need:
+;;; Dependencies
 
 (eval-when-compile
   (require 'cl-lib))
 (require 'rect)
 
-;; Customize options.
+;;; Custom options
 
 (defgroup boxquote nil
   "Mark regions of text with a half-box."
@@ -185,7 +185,7 @@ the article you'd copied the text from."
   :type  'string
   :group 'boxquote)
 
-;; Main code:
+;;; Main code
 
 (defun boxquote-points ()
   "Find the start and end points of a boxquote.
