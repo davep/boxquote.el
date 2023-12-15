@@ -452,12 +452,14 @@ that buffer."
            (describe-key key)
            (with-current-buffer (help-buffer)
              (buffer-substring-no-properties (point-min) (point-max)))))
-         (boxquote-title (format boxquote-describe-key-title-format (key-description key)))))))
+        (boxquote-title (format boxquote-describe-key-title-format
+                                (key-description key)))))))
 
 ;;;###autoload
 (defun boxquote-shell-command (command)
   "Call `shell-command' with COMMAND and boxquote the output."
-  (interactive (list (read-from-minibuffer "Shell command: " nil nil nil 'shell-command-history)))
+  (interactive (list (read-from-minibuffer "Shell command: " nil nil nil
+                                           'shell-command-history)))
   (boxquote-text (with-temp-buffer
                    (shell-command command t)
                    (buffer-string)))
@@ -469,7 +471,8 @@ that buffer."
   (interactive "CCommand: ")
   (boxquote-text (with-temp-buffer
                    (where-is definition t)
-                   (format boxquote-where-is-body-format definition (buffer-string))))
+                   (format boxquote-where-is-body-format definition
+                           (buffer-string))))
   (boxquote-title (format boxquote-where-is-title-format definition)))
 
 ;;;###autoload
