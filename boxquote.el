@@ -59,13 +59,13 @@
 
 ;;; Code:
 
-;; Things we need:
+;;; Dependencies
 
 (eval-when-compile
   (require 'cl-lib))
 (require 'rect)
 
-;; Customize options.
+;;; Custom options
 
 (defgroup boxquote nil
   "Mark regions of text with a half-box."
@@ -185,14 +185,14 @@ the article you'd copied the text from."
   :type  'string
   :group 'boxquote)
 
-;; Main code:
+;;; Main code
 
 (defun boxquote-points ()
   "Find the start and end points of a boxquote.
 
-If `point' is inside a boxquote then a cons is returned, the `car' is the
-start `point' and the `cdr' is the end `point'. NIL is returned if no
-boxquote is found."
+If `point' is inside a boxquote then a cons is returned, the
+`car' is the start `point' and the `cdr' is the end `point'.
+NIL is returned if no boxquote is found."
   (save-excursion
     (beginning-of-line)
     (let* ((re-top    (concat "^" (regexp-quote boxquote-top-corner)
@@ -257,8 +257,8 @@ boxquote is found."
 (defun boxquote-title (title)
   "Set the title of the current boxquote to TITLE.
 
-If TITLE is an empty string the title is removed. Note that the title will
-be formatted using `boxquote-title-format'."
+If TITLE is an empty string the title is removed. Note that
+the title will be formatted using `boxquote-title-format'."
   (interactive (list (read-from-minibuffer "Title: " (boxquote-get-title))))
   (save-excursion
     (save-restriction
@@ -309,8 +309,9 @@ be formatted using `boxquote-title-format'."
 (defun boxquote-insert-file (filename)
   "Insert the contents of a file, boxed with `boxquote-region'.
 
-If `boxquote-title-files' is non-nil the boxquote will be given a title that
-is the result of applying `boxquote-file-title-function' to FILENAME."
+If `boxquote-title-files' is non-nil the boxquote will be given a
+title that is the result of applying `boxquote-file-title-function'
+to FILENAME."
   (interactive "fInsert file: ")
   (insert (with-temp-buffer
             (insert-file-contents filename nil)
@@ -324,8 +325,9 @@ is the result of applying `boxquote-file-title-function' to FILENAME."
 (defun boxquote-insert-buffer (buffer)
   "Insert the contents of a buffer, boxes with `boxquote-region'.
 
-If `boxquote-title-buffers' is non-nil the boxquote will be given a title that
-is the result of applying `boxquote-buffer-title-function' to BUFFER."
+If `boxquote-title-buffers' is non-nil the boxquote will be given a
+title that is the result of applying `boxquote-buffer-title-function'
+to BUFFER."
   (interactive "bInsert Buffer: ")
   (boxquote-text
    (with-current-buffer buffer
@@ -337,8 +339,8 @@ is the result of applying `boxquote-buffer-title-function' to BUFFER."
 (defun boxquote-kill-ring-save ()
   "Like `kill-ring-save' but remembers a title if possible.
 
-The title is acquired by calling `boxquote-kill-ring-save-title'. The title
-will be used by `boxquote-yank'."
+The title is acquired by calling `boxquote-kill-ring-save-title'.
+The title will be used by `boxquote-yank'."
   (interactive)
   (call-interactively #'kill-ring-save)
   (setf (car kill-ring-yank-pointer)
@@ -431,8 +433,10 @@ VARIABLE is the variable to describe."
 (defun boxquote-describe-key (key)
   "Call `describe-key' on KEY and boxquote the output into the current buffer.
 
-If the call to this command is prefixed with \\[universal-argument] you will also be
-prompted for a buffer. The key definition used will be taken from that buffer."
+If the call to this command is prefixed with \
+\\[universal-argument] you will also be
+prompted for a buffer. The key definition used will be taken from
+that buffer."
   (interactive "kDescribe key: ")
   (let ((from-buffer (if current-prefix-arg
                          (read-buffer "Buffer: " (current-buffer) t)
@@ -448,12 +452,14 @@ prompted for a buffer. The key definition used will be taken from that buffer."
            (describe-key key)
            (with-current-buffer (help-buffer)
              (buffer-substring-no-properties (point-min) (point-max)))))
-         (boxquote-title (format boxquote-describe-key-title-format (key-description key)))))))
+        (boxquote-title (format boxquote-describe-key-title-format
+                                (key-description key)))))))
 
 ;;;###autoload
 (defun boxquote-shell-command (command)
   "Call `shell-command' with COMMAND and boxquote the output."
-  (interactive (list (read-from-minibuffer "Shell command: " nil nil nil 'shell-command-history)))
+  (interactive (list (read-from-minibuffer "Shell command: " nil nil nil
+                                           'shell-command-history)))
   (boxquote-text (with-temp-buffer
                    (shell-command command t)
                    (buffer-string)))
@@ -465,7 +471,8 @@ prompted for a buffer. The key definition used will be taken from that buffer."
   (interactive "CCommand: ")
   (boxquote-text (with-temp-buffer
                    (where-is definition t)
-                   (format boxquote-where-is-body-format definition (buffer-string))))
+                   (format boxquote-where-is-body-format definition
+                           (buffer-string))))
   (boxquote-title (format boxquote-where-is-title-format definition)))
 
 ;;;###autoload
