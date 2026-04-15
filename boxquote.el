@@ -6,7 +6,7 @@
 ;; Version: 2.3
 ;; Keywords: convenience, editing, quoting
 ;; URL: https://github.com/davep/boxquote.el
-;; Package-Requires: ((cl-lib "0.5"))
+;; Package-Requires: ((emacs "28.1"))
 
 ;; This program is free software: you can redistribute it and/or modify it
 ;; under the terms of the GNU General Public License as published by the
@@ -552,6 +552,40 @@ that buffer."
   (interactive)
   (let ((box (boxquote-points-with-check)))
     (boxquote-unbox-region (car box) (1+ (cdr box)))))
+
+;;;###autoload
+(transient-define-prefix boxquote ()
+  "Show a transient for boxquote commands."
+  [["Box"
+    ("B" "Current boxquote" boxquote-boxquote :inapt-if-not boxquote-quoted-p)
+    ("b" "Current buffer" boxquote-buffer)
+    ("d" "Current defun" boxquote-defun)
+    ("p" "Current paragraph" boxquote-paragraph)
+    ("r" "Current region" boxquote-region :inapt-if-not region-active-p)
+    ""
+    "Help"
+    ("h f" "Function" boxquote-describe-function)
+    ("h k" "Key" boxquote-describe-key)
+    ("h v" "Variable" boxquote-describe-variable)
+    ("h w" "Where-is" boxquote-where-is)]
+  ["Insert"
+    ("i b" "Buffer" boxquote-insert-buffer)
+    ("i f" "File" boxquote-insert-file)
+    ("i s" "Shell command" boxquote-shell-command)
+    ("i t" "Text" boxquote-text)
+    ""
+    "Narrow"
+    ("n b" "To boxquote" boxquote-narrow-to-boxquote :inapt-if-not boxquote-quoted-p)
+    ("n c" "To content" boxquote-narrow-to-boxquote-content :inapt-if-not boxquote-quoted-p)]
+  ["Yank"
+   ("w" "Kill-ring save" boxquote-kill-ring-save :inapt-if-not region-active-p)
+   ("y" "Yank and boxquote" boxquote-yank)
+   ""
+   "Other"
+   ("t" "Set boxquote title" boxquote-title :inapt-if-not boxquote-quoted-p)
+   ("k" "Kill boxquote" boxquote-kill :inapt-if-not boxquote-quoted-p)
+   ("f" "Fill paragraph in boxquote" boxquote-fill-paragraph :inapt-if-not boxquote-quoted-p)
+   ("u" "Unbox" boxquote-unbox :inapt-if-not boxquote-quoted-p)]])
 
 (provide 'boxquote)
 
