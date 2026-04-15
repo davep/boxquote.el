@@ -557,32 +557,32 @@ that buffer."
 (transient-define-prefix boxquote ()
   "Show a transient for boxquote commands."
   [["Box"
-    ("b B" "Current boxquote" boxquote-boxquote :inapt-if-not boxquote-quoted-p)
-    ("b b" "Current buffer" boxquote-buffer)
-    ("b d" "Current defun" boxquote-defun)
-    ("b p" "Current paragraph" boxquote-paragraph)
-    ("b r" "Current region" boxquote-region :inapt-if-not region-active-p)
+    ("B" "Current boxquote" boxquote-boxquote :inapt-if-not boxquote-quoted-p)
+    ("b" "Current buffer" boxquote-buffer)
+    ("d" "Current defun" boxquote-defun)
+    ("p" "Current paragraph" boxquote-paragraph)
+    ("r" "Current region" boxquote-region :inapt-if-not region-active-p)
     ""
-    "Describe"
-    ("d f" "Function" boxquote-describe-function)
-    ("d k" "Key" boxquote-describe-key)
-    ("d v" "Variable" boxquote-describe-variable)]
+    "Help"
+    ("h f" "Function" boxquote-describe-function)
+    ("h k" "Key" boxquote-describe-key)
+    ("h v" "Variable" boxquote-describe-variable)
+    ("h w" "Boxed where-is" boxquote-where-is)]
   ["Insert"
-    ("i t" "Boxed text" boxquote-text)
     ("i f" "Boxed file" boxquote-insert-file)
     ("i b" "Boxed buffer" boxquote-insert-buffer)
-    ("i w" "Boxed where-is" boxquote-where-is)
+    ("i t" "Boxes text" boxquote-text)
     ""
     "Narrow"
     ("n b" "To boxquote" boxquote-narrow-to-boxquote :inapt-if-not boxquote-quoted-p)
     ("n c" "To boxquote content" boxquote-narrow-to-boxquote-content :inapt-if-not boxquote-quoted-p)]
   ["Yank"
-   ("y" "Yank and boxquote" boxquote-yank)
    ("w" "Kill-ring save" boxquote-kill-ring-save :inapt-if-not region-active-p)
+   ("y" "Yank and boxquote" boxquote-yank)
    ""
    "Other"
    ("t" "Set boxquote title" boxquote-title :inapt-if-not boxquote-quoted-p)
-   ("K" "Kill boxquote" boxquote-kill :inapt-if-not boxquote-quoted-p)
+   ("k" "Kill boxquote" boxquote-kill :inapt-if-not boxquote-quoted-p)
    ("f" "Fill paragraph in boxquote" boxquote-fill-paragraph :inapt-if-not boxquote-quoted-p)
    ("u" "Unbox" boxquote-unbox :inapt-if-not boxquote-quoted-p)]])
 
