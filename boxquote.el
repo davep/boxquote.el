@@ -4,7 +4,7 @@
 
 ;; Author: Dave Pearson <davep@davep.org>
 ;; Version: 2.3
-;; Keywords: quoting
+;; Keywords: convenience, editing, quoting
 ;; URL: https://github.com/davep/boxquote.el
 ;; Package-Requires: ((cl-lib "0.5"))
 
@@ -367,7 +367,7 @@ whatever `boxquote-kill-ring-save-title' returned at the time."
                                      (error nil))))
                        (when (listp yanked)
                          (when (eq (car yanked) 'boxquote-yank-marker)
-			   (erase-buffer)
+                           (erase-buffer)
                            (insert (nth 2 yanked))
                            (nth 1 yanked))))))
                 (run-hooks 'boxquote-yank-hook)
@@ -541,9 +541,9 @@ that buffer."
                               "]" boxquote-top-and-tail))
                 (lines (concat "^" (regexp-quote boxquote-side))))
             (cl-loop while (< (point) (point-max))
-               if (looking-at ends)  do (kill-line t)
-               if (looking-at lines) do (delete-char 2)
-               do (forward-line)))
+                     if (looking-at ends)  do (kill-line t)
+                     if (looking-at lines) do (delete-char 2)
+                     do (forward-line)))
         (error "I can't see a box here")))))
 
 ;;;###autoload
