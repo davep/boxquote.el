@@ -567,15 +567,15 @@ that buffer."
     ("h f" "Function" boxquote-describe-function)
     ("h k" "Key" boxquote-describe-key)
     ("h v" "Variable" boxquote-describe-variable)
-    ("h w" "Boxed where-is" boxquote-where-is)]
+    ("h w" "Where-is" boxquote-where-is)]
   ["Insert"
-    ("i f" "Boxed file" boxquote-insert-file)
-    ("i b" "Boxed buffer" boxquote-insert-buffer)
-    ("i t" "Boxes text" boxquote-text)
+    ("i f" "File" boxquote-insert-file)
+    ("i b" "Buffer" boxquote-insert-buffer)
+    ("i t" "Text" boxquote-text)
     ""
     "Narrow"
     ("n b" "To boxquote" boxquote-narrow-to-boxquote :inapt-if-not boxquote-quoted-p)
-    ("n c" "To boxquote content" boxquote-narrow-to-boxquote-content :inapt-if-not boxquote-quoted-p)]
+    ("n c" "To content" boxquote-narrow-to-boxquote-content :inapt-if-not boxquote-quoted-p)]
   ["Yank"
    ("w" "Kill-ring save" boxquote-kill-ring-save :inapt-if-not region-active-p)
    ("y" "Yank and boxquote" boxquote-yank)
