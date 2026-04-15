@@ -1,9 +1,9 @@
 ;;; boxquote.el --- Quote text with a semi-box  -*- lexical-binding: nil -*-
 
-;; Copyright 1999-2022 by Dave Pearson <davep@davep.org>
+;; Copyright 1999-2026 by Dave Pearson <davep@davep.org>
 
 ;; Author: Dave Pearson <davep@davep.org>
-;; Version: 2.3
+;; Version: 2.4
 ;; Keywords: convenience, editing, quoting
 ;; URL: https://github.com/davep/boxquote.el
 ;; Package-Requires: ((emacs "28.1"))
