@@ -553,6 +553,38 @@ that buffer."
   (let ((box (boxquote-points-with-check)))
     (boxquote-unbox-region (car box) (1+ (cdr box)))))
 
+(transient-define-prefix boxquote ()
+  "Show a transient for boxquote commands."
+  [["Box"
+    ("b B" "Box current boxquote" boxquote-boxquote :inapt-if-not boxquote-quoted-p)
+    ("b b" "Box current buffer" boxquote-buffer)
+    ("b d" "Box current defun" boxquote-defun)
+    ("b p" "Box current paragraph" boxquote-paragraph)
+    ("b r" "Box current region" boxquote-region :inapt-if-not region-active-p)
+    ""
+    "Describe"
+    ("d f" "Describe a function" boxquote-describe-function)
+    ("d k" "Describe a key" boxquote-describe-key)
+    ("d v" "Describe a variable" boxquote-describe-variable)]
+  ["Insert"
+    ("i t" "Insert boxed text" boxquote-text)
+    ("i f" "Insert boxed file" boxquote-insert-file)
+    ("i b" "Insert boxed buffer" boxquote-insert-buffer)
+    ("i w" "Insert boxes where-is" boxquote-where-is)
+    ""
+    "Narrow"
+    ("n b" "Narrow to boxquote" boxquote-narrow-to-boxquote :inapt-if-not boxquote-quoted-p)
+    ("n c" "Narrow to boxquote content" boxquote-narrow-to-boxquote-content :inapt-if-not boxquote-quoted-p)]
+  ["Yank"
+   ("y" "Yank and boxquote" boxquote-yank)
+   ("k" "Kill-ring save and boxquote" boxquote-kill-ring-save)
+   ""
+   "Other"
+   ("s" "Set boxquote title" boxquote-title :inapt-if-not boxquote-quoted-p)
+   ("K" "Kill boxquote" boxquote-kill :inapt-if-not boxquote-quoted-p)
+   ("f" "Fill paragraph in boxquote" boxquote-fill-paragraph :inapt-if-not boxquote-quoted-p)
+   ("u" "Unbox" boxquote-unbox :inapt-if-not boxquote-quoted-p)]])
+
 (provide 'boxquote)
 
 ;;; boxquote.el ends here
