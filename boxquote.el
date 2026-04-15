@@ -4,7 +4,7 @@
 
 ;; Author: Dave Pearson <davep@davep.org>
 ;; Version: 2.3
-;; Keywords: quoting
+;; Keywords: convenience, editing, quoting
 ;; URL: https://github.com/davep/boxquote.el
 ;; Package-Requires: ((cl-lib "0.5"))
 
