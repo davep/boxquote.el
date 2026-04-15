@@ -367,7 +367,7 @@ whatever `boxquote-kill-ring-save-title' returned at the time."
                                      (error nil))))
                        (when (listp yanked)
                          (when (eq (car yanked) 'boxquote-yank-marker)
-			   (erase-buffer)
+                           (erase-buffer)
                            (insert (nth 2 yanked))
                            (nth 1 yanked))))))
                 (run-hooks 'boxquote-yank-hook)
