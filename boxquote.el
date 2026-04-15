@@ -569,8 +569,9 @@ that buffer."
     ("h v" "Variable" boxquote-describe-variable)
     ("h w" "Where-is" boxquote-where-is)]
   ["Insert"
-    ("i f" "File" boxquote-insert-file)
     ("i b" "Buffer" boxquote-insert-buffer)
+    ("i f" "File" boxquote-insert-file)
+    ("i s" "Shell command" boxquote-shell-command)
     ("i t" "Text" boxquote-text)
     ""
     "Narrow"
