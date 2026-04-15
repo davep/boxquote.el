@@ -553,6 +553,7 @@ that buffer."
   (let ((box (boxquote-points-with-check)))
     (boxquote-unbox-region (car box) (1+ (cdr box)))))
 
+;;;###autoload
 (transient-define-prefix boxquote ()
   "Show a transient for boxquote commands."
   [["Box"
