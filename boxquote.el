@@ -578,10 +578,10 @@ that buffer."
     ("n c" "To boxquote content" boxquote-narrow-to-boxquote-content :inapt-if-not boxquote-quoted-p)]
   ["Yank"
    ("y" "Yank and boxquote" boxquote-yank)
-   ("s" "Kill-ring save" boxquote-kill-ring-save :inapt-if-not region-active-p)
+   ("w" "Kill-ring save" boxquote-kill-ring-save :inapt-if-not region-active-p)
    ""
    "Other"
-   ("s" "Set boxquote title" boxquote-title :inapt-if-not boxquote-quoted-p)
+   ("t" "Set boxquote title" boxquote-title :inapt-if-not boxquote-quoted-p)
    ("K" "Kill boxquote" boxquote-kill :inapt-if-not boxquote-quoted-p)
    ("f" "Fill paragraph in boxquote" boxquote-fill-paragraph :inapt-if-not boxquote-quoted-p)
    ("u" "Unbox" boxquote-unbox :inapt-if-not boxquote-quoted-p)]])
