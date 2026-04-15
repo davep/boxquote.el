@@ -3,7 +3,7 @@
 ;; Copyright 1999-2026 by Dave Pearson <davep@davep.org>
 
 ;; Author: Dave Pearson <davep@davep.org>
-;; Version: 2.4
+;; Version: 2.4.1
 ;; Keywords: convenience, editing, quoting
 ;; URL: https://github.com/davep/boxquote.el
 ;; Package-Requires: ((emacs "28.1"))
@@ -60,6 +60,7 @@
 (eval-when-compile
   (require 'cl-lib))
 (require 'rect)
+(require 'transient)
 
 ;;; Custom options
 
