@@ -6,7 +6,7 @@
 ;; Version: 2.3
 ;; Keywords: convenience, editing, quoting
 ;; URL: https://github.com/davep/boxquote.el
-;; Package-Requires: ((cl-lib "0.5"))
+;; Package-Requires: ((emacs "28.1"))
 
 ;; This program is free software: you can redistribute it and/or modify it
 ;; under the terms of the GNU General Public License as published by the
